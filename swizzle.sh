@@ -90,14 +90,14 @@ do
 done
 unset f
 
-typeset clipcopy_cmd
+typeset clipcopy_cmd=
 if $(command -v pbcopy >/dev/null); then
   clipcopy_cmd='pbcopy'
 elif $(command -v xsel >/dev/null); then
   clipcopy_cmd='xsel -bi'
 fi
 
-typeset clippaste_cmd
+typeset clippaste_cmd=
 if $(command -v pbpaste >/dev/null); then
   clippaste_cmd='pbpaste'
 elif $(command -v xsel >/dev/null); then
