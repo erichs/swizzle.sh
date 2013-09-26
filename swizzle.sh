@@ -94,7 +94,7 @@ fi
 typeset clippaste_cmd
 if $(command -v pbpaste >/dev/null); then
   clippaste_cmd='pbpaste'
-elif $(command -v xsel 2>/dev/null); then
+elif $(command -v xsel >/dev/null); then
   clippaste_cmd='xsel -bo'
 fi
 
