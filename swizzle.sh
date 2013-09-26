@@ -51,6 +51,12 @@ color () {
   GREP_COLOR="${color}" grep -E --color=always "$pattern"
 }
 
+firstcol () {
+  about 'prints first column of text'
+  group 'swizzle'
+  cut -d' ' -f 1
+}
+
 lastcol () {
   about 'prints last column of text'
   group 'swizzle'
