@@ -2,7 +2,7 @@
 # swizzle.sh by erichs
 # sweet text manipulation utilities for your shell!
 
-# version: 1.0
+# version: 1.0.1
 
 # install: source this script in your ~/.profile or ~/.${SHELL}rc script
 # known to work on bash, zsh, and ksh93
