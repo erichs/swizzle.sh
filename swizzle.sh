@@ -2,7 +2,7 @@
 # swizzle.sh by erichs
 # sweet text manipulation utilities for your shell!
 
-# version: 1.0.2
+# version: 1.0.3
 
 # install: source this script in your ~/.profile or ~/.${SHELL}rc script
 # known to work on bash, zsh, and ksh93
@@ -83,11 +83,41 @@ lc () {
   tr '[:upper:]' '[:lower:]'
 }
 
+noblanks () {
+  about 'removes blank lines from stdin'
+  example '$ cat myfile | noblanks'
+  group 'swizzle'
+
+  sed '/^$/d'
+}
+
+nocomments () {
+  about 'removes comments (#) from stdin'
+  example '$ cat script.sh | nocomments'
+  group 'swizzle'
+
+  sed '/^\#$/d'
+}
+
 stripfirst () {
   about 'remove first column of space-delimited text'
+  example '$ stripfirst <(cat /etc/passwd)'
   group 'swizzle'
 
   awk '{for (f=2; f<=NF; ++f) { if (f!=2) {printf("%s",OFS);} printf("%s",$f)} printf("\n")}'
+}
+
+tabs2spaces () {
+  about 'convert TAB chars to spaces'
+  param '1: optional number of spaces per tab, default is 2'
+  example '$ tabs2spaces 4 < srcfile.c'
+  example '$ cat myfile.txt | tabs2spaces'
+  group 'swizzle'
+
+  typeset num=${1:-2} # default to two spaces per tab
+  typeset spaces="$(printf %${num}s)"
+  typeset regex="'s/\t/${spaces}/g'"
+  eval sed $regex
 }
 
 uc () {
