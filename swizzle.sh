@@ -137,7 +137,7 @@ unset f
 
 typeset clipcopy_cmd=
 if $(command -v pbcopy >/dev/null); then
-  clipcopy_cmd='pbcopy'
+  clipcopy_cmd='pbcopy -clipboard'
 elif $(command -v xsel >/dev/null); then
   clipcopy_cmd='xsel -bi'
 fi
